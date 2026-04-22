@@ -1,16 +1,23 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pickle
 import pandas as pd
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # تحميل ملف الوجبات
 with open("weekly_plan.pkl", "rb") as f:
     weekly_plan = pickle.load(f)
 
-# إذا كان الملف ليس DataFrame نحاول تحويله
 if not isinstance(weekly_plan, pd.DataFrame):
     try:
         weekly_plan = pd.DataFrame(weekly_plan)
@@ -105,10 +112,8 @@ def build_weekly_response(df: pd.DataFrame, meals_per_day: int) -> list:
         return []
 
     result = []
-
     working_df = df.copy()
 
-    # محاولة توحيد أسماء الأعمدة لو موجودة
     column_map = {}
     for col in working_df.columns:
         c = col.strip().lower()
@@ -163,6 +168,13 @@ def get_plan(data: UserInput):
     targets = macro_targets(tdee, goal)
 
     response = {
+        "tdee": tdee,
+        "goal": goal,
+        "target_calories": targets["target_kcal"],
+        "protein_g_target": targets["protein_g_target"],
+        "fat_g_target": targets["fat_g_target"],
+        "carb_g_target": targets["carb_g_target"],
+        "bmi": bmi,
         "user_daily_needs": {
             "Age": data.age,
             "Gender": data.gender,
