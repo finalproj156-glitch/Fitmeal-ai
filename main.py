@@ -160,39 +160,41 @@ def home():
 
 @app.post("/plan")
 def get_plan(data: UserInput):
-    bmi = calculate_bmi(data.weight, data.height)
-    tdee = calculate_tdee(data.weight, data.height, data.age, data.gender, data.activity)
-    goal = determine_goal(data.goal, bmi)
-    targets = macro_targets(tdee, goal)
+    try:
+        bmi = calculate_bmi(data.weight, data.height)
+        tdee = calculate_tdee(data.weight, data.height, data.age, data.gender, data.activity)
+        goal = determine_goal(data.goal, bmi)
+        targets = macro_targets(tdee, goal)
 
-    response = {
-        "tdee": tdee,
-        "goal": goal,
-        "target_calories": targets["target_kcal"],
-        "protein_g_target": targets["protein_g_target"],
-        "fat_g_target": targets["fat_g_target"],
-        "carb_g_target": targets["carb_g_target"],
-        "bmi": bmi,
-        "user_daily_needs": {
-            "Age": data.age,
-            "Gender": data.gender,
-            "Weight_kg": data.weight,
-            "Height_cm": data.height,
-            "BMI": bmi,
-            "Activity": data.activity,
-            "Goal": goal,
-            "TDEE_kcal": tdee,
-            "Protein_g_target": targets["protein_g_target"],
-            "Fat_g_target": targets["fat_g_target"],
-            "Carb_g_target": targets["carb_g_target"],
-            "Meals_per_day": data.meals_per_day
-        },
-        "weekly_plan": build_weekly_response(weekly_plan, data.meals_per_day),
-        "drinks": [
-            "Water (aim for 2-3L/day)",
-            "Green Tea (optional, no sugar)",
-            "Laban (good post-meal)"
-        ]
-    }
+        return {
+            "tdee": tdee,
+            "goal": goal,
+            "target_calories": targets["target_kcal"],
+            "protein_g_target": targets["protein_g_target"],
+            "fat_g_target": targets["fat_g_target"],
+            "carb_g_target": targets["carb_g_target"],
+            "bmi": bmi,
+            "user_daily_needs": {
+                "Age": data.age,
+                "Gender": data.gender,
+                "Weight_kg": data.weight,
+                "Height_cm": data.height,
+                "BMI": bmi,
+                "Activity": data.activity,
+                "Goal": goal,
+                "TDEE_kcal": tdee,
+                "Protein_g_target": targets["protein_g_target"],
+                "Fat_g_target": targets["fat_g_target"],
+                "Carb_g_target": targets["carb_g_target"],
+                "Meals_per_day": data.meals_per_day
+            },
+            "weekly_plan": build_weekly_response(weekly_plan, data.meals_per_day),
+            "drinks": [
+                "Water (aim for 2-3L/day)",
+                "Green Tea (optional, no sugar)",
+                "Laban (good post-meal)"
+            ]
+        }
 
-    return response
+    except Exception as e:
+        return {"error": str(e)}
