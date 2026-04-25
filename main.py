@@ -14,15 +14,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# تحميل ملف الوجبات
-with open("weekly_plan.pkl", "rb") as f:
-    weekly_plan = pickle.load(f)
-
-if not isinstance(weekly_plan, pd.DataFrame):
-    try:
-        weekly_plan = pd.DataFrame(weekly_plan)
-    except Exception:
-        weekly_plan = pd.DataFrame()
+# تحميل ملف الوجبات (مع حماية من الخطأ)
+try:
+    with open("weekly_plan.pkl", "rb") as f:
+        weekly_plan = pickle.load(f)
+except Exception as e:
+    print("ERROR LOADING weekly_plan.pkl:", e)
+    weekly_plan = pd.DataFrame()
 
 
 class UserInput(BaseModel):
