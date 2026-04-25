@@ -16,8 +16,7 @@ app.add_middleware(
 
 # تحميل ملف الوجبات (مع حماية من الخطأ)
 try:
-    with open("weekly_plan.pkl", "rb") as f:
-        weekly_plan = pickle.load(f)
+    weekly_plan = []
 except Exception as e:
     print("ERROR LOADING weekly_plan.pkl:", e)
     weekly_plan = pd.DataFrame()
@@ -188,7 +187,7 @@ def get_plan(data: UserInput):
                 "Carb_g_target": targets["carb_g_target"],
                 "Meals_per_day": data.meals_per_day
             },
-            "weekly_plan": build_weekly_response(weekly_plan, data.meals_per_day),
+            "weekly_plan": [],
             "drinks": [
                 "Water (aim for 2-3L/day)",
                 "Green Tea (optional, no sugar)",
