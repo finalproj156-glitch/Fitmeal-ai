@@ -1,0 +1,17 @@
+Goal,Drink_Name,Drink_Name_AR,Drink_Type,Calories,Caffeine,Note
+Weight_Loss,Water,ماء,water,0.0,False,Mandatory: aim for 2–3L/day
+Maintenance,Water,ماء,water,0.0,False,Mandatory: aim for 2–3L/day
+Muscle_Gain,Water,ماء,water,0.0,False,Mandatory: aim for 2–3L/day
+Weight_Loss,Green Tea,شاي أخضر,hot,0.0,True,Optional (no sugar)
+Weight_Loss,Black Coffee,قهوة سادة,hot,0.0,True,Optional (no sugar)
+Maintenance,Herbal Tea,شاي أعشاب,hot,0.0,False,Optional
+Maintenance,Coffee (light),قهوة (خفيفة),hot,0.0,True,Optional (no sugar)
+Muscle_Gain,Black Coffee,قهوة سادة,hot,0.0,True,Optional (no sugar)
+Muscle_Gain,Green Tea,شاي أخضر,hot,0.0,True,Optional (no sugar)
+Weight_Loss,Sparkling Water,ماء غازي,water,0.0,False,Optional
+Maintenance,Low-fat Milk,حليب قليل الدسم,dairy,120.0,False,Optional
+Muscle_Gain,Milk,حليب,dairy,150.0,False,Good with breakfast/snack
+Muscle_Gain,Laban,لبن,dairy,140.0,False,Good post-meal
+Muscle_Gain,Electrolyte Drink (low sugar),مشروب أملاح (سكر قليل),electrolyte,40.0,False,Optional if training hard
+Maintenance,Laban,لبن,dairy,120.0,False,Optional
+Weight_Loss,Herbal Tea,شاي أعشاب,hot,0.0,False,Optional

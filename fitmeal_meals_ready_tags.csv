@@ -1,0 +1,61 @@
+Goal,Meal_Type,Meal_Name,Meal_Name_AR,Calories,Protein_g,Carbs_g,Fat_g,Fiber_g,Sugars_g,Tags
+Muscle_Gain,Breakfast,Oats + Milk + Banana + Peanut Butter,شوفان + حليب + موز + زبدة فول سوداني,720.0,35.0,95.0,22.0,10.0,22.0,High Protein;Energy Dense
+Muscle_Gain,Breakfast,Eggs (3) + Whole Grain Toast + Avocado,3 بيض + توست أسمر + أفوكادو,680.0,33.0,45.0,35.0,10.0,6.0,Whole Grain;Healthy Fats;High Protein
+Muscle_Gain,Breakfast,Greek Yogurt + Granola + Berries + Honey,زبادي يوناني + جرانولا + توت + عسل,620.0,30.0,78.0,20.0,8.0,24.0,Probiotics;High Protein
+Muscle_Gain,Breakfast,Protein Pancakes + Fruit,بان كيك بروتين + فاكهة,650.0,40.0,75.0,18.0,6.0,18.0,High Protein
+Muscle_Gain,Breakfast,Shakshuka + Whole Grain Pita,شكشوكة + خبز أسمر,700.0,34.0,70.0,28.0,8.0,10.0,Whole Grain;High Protein
+Muscle_Gain,Breakfast,Tuna Sandwich + Fruit,ساندويتش تونة + فاكهة,640.0,42.0,70.0,16.0,8.0,14.0,Whole Grain;High Protein
+Muscle_Gain,Breakfast,Labneh + Olive Oil + Whole Grain Bread,لبنة + زيت زيتون + خبز أسمر,610.0,24.0,55.0,30.0,6.0,6.0,Whole Grain;Healthy Fats
+Muscle_Gain,Breakfast,Chicken Fajita Wrap + Veg,راب دجاج فاهيتا + خضار,690.0,45.0,70.0,22.0,8.0,8.0,High Protein
+Muscle_Gain,Lunch,Grilled Chicken + Rice + Veg,دجاج مشوي + رز + خضار,880.0,55.0,105.0,22.0,10.0,8.0,Balanced;High Protein
+Muscle_Gain,Lunch,Beef Bowl + Rice + Salad,باول لحم + رز + سلطة,950.0,50.0,110.0,28.0,8.0,8.0,Balanced;High Protein
+Muscle_Gain,Lunch,Salmon + Quinoa + Veg,سلمون + كينوا + خضار,900.0,45.0,85.0,35.0,10.0,6.0,Omega-3;High Protein
+Muscle_Gain,Lunch,Chicken Shawarma (Healthy) + Rice + Salad,شاورما دجاج صحية + رز + سلطة,920.0,55.0,105.0,26.0,9.0,7.0,Traditional;High Protein
+Muscle_Gain,Lunch,Turkey Sandwich + Soup,ساندويتش ديك رومي + شوربة,850.0,50.0,95.0,22.0,8.0,8.0,High Protein
+Muscle_Gain,Lunch,Tuna Pasta + Salad,مكرونة تونة + سلطة,890.0,48.0,110.0,20.0,10.0,7.0,Whole Wheat;High Protein
+Muscle_Gain,Lunch,Chicken Kabsa (Light) + Salad,كبسة دجاج لايت + سلطة,980.0,55.0,120.0,25.0,7.0,6.0,Traditional;Balanced
+Muscle_Gain,Lunch,Beef Kofta + Pita + Salad,كفتة لحم + خبز + سلطة,910.0,48.0,85.0,35.0,6.0,6.0,Traditional;High Protein
+Muscle_Gain,Dinner,Lean Beef + Sweet Potato + Salad,لحم قليل دهن + بطاطا حلوة + سلطة,850.0,50.0,75.0,35.0,10.0,6.0,High Protein
+Muscle_Gain,Dinner,Chicken + Pasta + Veg,دجاج + مكرونة + خضار,880.0,55.0,100.0,24.0,9.0,7.0,Whole Wheat;High Protein
+Muscle_Gain,Dinner,Salmon + Rice + Veg,سلمون + رز + خضار,900.0,45.0,95.0,35.0,8.0,6.0,Omega-3;High Protein
+Muscle_Gain,Dinner,Shrimp Stir-Fry + Rice,روبيان سوتيه + رز,820.0,48.0,95.0,22.0,8.0,7.0,High Protein
+Muscle_Gain,Dinner,Chicken Soup + Bread + Salad,شوربة دجاج + خبز + سلطة,780.0,45.0,85.0,22.0,7.0,6.0,Comfort;Balanced
+Muscle_Gain,Dinner,Eggs + Beans + Whole Grain Bread,بيض + فول/فاصوليا + خبز أسمر,800.0,40.0,95.0,25.0,16.0,6.0,Whole Grain;High Fiber
+Muscle_Gain,Dinner,Paneer (Light) + Rice + Veg,بانير لايت + رز + خضار,820.0,38.0,95.0,28.0,8.0,7.0,Vegetarian;High Protein
+Muscle_Gain,Dinner,Chicken Tikka + Quinoa + Salad,دجاج تيكا + كينوا + سلطة,860.0,55.0,85.0,28.0,8.0,6.0,High Protein
+Maintenance,Breakfast,Oats + Milk + Fruit,شوفان + حليب + فاكهة,560.0,22.0,75.0,15.0,8.0,16.0,Balanced
+Maintenance,Breakfast,Eggs (2) + Whole Grain Toast + Veg,بيضتين + توست أسمر + خضار,520.0,26.0,40.0,24.0,6.0,6.0,Whole Grain;Balanced
+Maintenance,Breakfast,Greek Yogurt + Berries + Nuts,زبادي يوناني + توت + مكسرات,520.0,28.0,40.0,25.0,8.0,14.0,Probiotics;Balanced
+Maintenance,Breakfast,Foul (Light) + Whole Grain Bread,فول لايت + خبز أسمر,540.0,22.0,75.0,15.0,14.0,6.0,Traditional;High Fiber
+Maintenance,Breakfast,Labneh + Bread + Cucumber/Tomato,لبنة + خبز + خيار/طماطم,500.0,20.0,55.0,20.0,5.0,6.0,Traditional;Balanced
+Maintenance,Breakfast,Tuna Sandwich + Salad,ساندويتش تونة + سلطة,520.0,35.0,55.0,16.0,8.0,7.0,Whole Grain;High Protein
+Maintenance,Lunch,Grilled Chicken + Brown Rice + Veg,دجاج مشوي + رز بني + خضار,720.0,45.0,85.0,18.0,9.0,6.0,Balanced;High Protein
+Maintenance,Lunch,Salmon + Quinoa + Salad,سلمون + كينوا + سلطة,740.0,38.0,65.0,28.0,8.0,6.0,Omega-3;Balanced
+Maintenance,Lunch,Beef Stir-Fry + Rice + Veg,لحم سوتيه + رز + خضار,760.0,40.0,85.0,25.0,7.0,7.0,Balanced
+Maintenance,Lunch,Chicken Kabsa (Moderate) + Salad,كبسة دجاج معتدلة + سلطة,820.0,45.0,105.0,22.0,6.0,6.0,Traditional;Balanced
+Maintenance,Lunch,Tuna Pasta + Salad,مكرونة تونة + سلطة,740.0,40.0,90.0,18.0,9.0,7.0,Whole Wheat;Balanced
+Maintenance,Lunch,Turkey Wrap + Veg + Yogurt,راب ديك رومي + خضار + زبادي,720.0,42.0,80.0,20.0,7.0,7.0,Balanced;High Protein
+Maintenance,Dinner,Chicken Soup + Bread + Salad,شوربة دجاج + خبز + سلطة,620.0,35.0,65.0,18.0,6.0,6.0,Comfort;Balanced
+Maintenance,Dinner,Eggs + Beans + Salad,بيض + فول/فاصوليا + سلطة,650.0,30.0,70.0,22.0,14.0,6.0,High Fiber
+Maintenance,Dinner,Shrimp + Rice + Veg,روبيان + رز + خضار,680.0,38.0,80.0,18.0,7.0,6.0,Balanced;High Protein
+Maintenance,Dinner,Lean Beef + Sweet Potato + Veg,لحم قليل دهن + بطاطا + خضار,700.0,40.0,60.0,28.0,8.0,6.0,Balanced
+Maintenance,Dinner,Chicken + Pasta + Veg,دجاج + مكرونة + خضار,720.0,42.0,85.0,18.0,8.0,7.0,Whole Wheat;Balanced
+Maintenance,Dinner,Salmon + Rice + Veg,سلمون + رز + خضار,740.0,36.0,80.0,28.0,7.0,6.0,Omega-3;Balanced
+Weight_Loss,Breakfast,Egg White Omelette + Veg + Whole Grain Toast,أومليت بياض + خضار + توست أسمر,380.0,32.0,30.0,12.0,6.0,5.0,High Protein;Low Cal
+Weight_Loss,Breakfast,Greek Yogurt (Low Fat) + Berries,زبادي يوناني قليل الدسم + توت,320.0,25.0,35.0,8.0,6.0,14.0,High Protein;Low Cal
+Weight_Loss,Breakfast,Overnight Oats (Light) + Strawberries,شوفان منقوع لايت + فراولة,360.0,18.0,55.0,8.0,8.0,12.0,High Fiber;Low Cal
+Weight_Loss,Breakfast,Foul (Light) + Salad,فول لايت + سلطة,390.0,18.0,55.0,10.0,14.0,5.0,Traditional;High Fiber
+Weight_Loss,Breakfast,Tuna Salad Bowl,سلطة تونة,360.0,35.0,18.0,14.0,6.0,5.0,High Protein;Low Cal
+Weight_Loss,Breakfast,Cottage Cheese + Apple + Cinnamon,جبن قريش + تفاح + قرفة,340.0,26.0,35.0,10.0,5.0,18.0,High Protein
+Weight_Loss,Lunch,Grilled Chicken Salad + Olive Oil,سلطة دجاج مشوي + زيت زيتون,520.0,45.0,25.0,22.0,8.0,6.0,Low Carb;High Protein
+Weight_Loss,Lunch,Tuna Salad + Whole Grain Crackers,سلطة تونة + كراكرز أسمر,540.0,40.0,40.0,18.0,8.0,6.0,High Protein
+Weight_Loss,Lunch,Salmon Salad + Quinoa (small),سلطة سلمون + كينوا (صغير),560.0,38.0,40.0,24.0,8.0,6.0,Omega-3;Balanced
+Weight_Loss,Lunch,Chicken Shawarma (Light) + Salad,شاورما دجاج لايت + سلطة,560.0,45.0,35.0,22.0,7.0,6.0,Traditional;High Protein
+Weight_Loss,Lunch,Shrimp + Veg Stir-Fry + Rice (small),روبيان + خضار + رز (صغير),540.0,38.0,55.0,14.0,7.0,6.0,Balanced
+Weight_Loss,Lunch,Turkey Wrap + Veg,راب ديك رومي + خضار,560.0,40.0,55.0,16.0,7.0,6.0,Balanced;High Protein
+Weight_Loss,Dinner,Chicken Soup + Salad,شوربة دجاج + سلطة,450.0,35.0,30.0,15.0,6.0,5.0,Low Cal
+Weight_Loss,Dinner,Lean Beef + Veg + Sweet Potato (small),لحم قليل دهن + خضار + بطاطا (صغير),520.0,40.0,35.0,22.0,7.0,6.0,Balanced
+Weight_Loss,Dinner,Eggs (2) + Salad + Beans (small),بيضتين + سلطة + فول (صغير),480.0,28.0,35.0,20.0,10.0,5.0,High Fiber
+Weight_Loss,Dinner,Salmon + Veg + Rice (small),سلمون + خضار + رز (صغير),520.0,32.0,45.0,20.0,7.0,6.0,Omega-3
+Weight_Loss,Dinner,Tuna + Veg + Quinoa (small),تونة + خضار + كينوا (صغير),510.0,38.0,45.0,16.0,7.0,6.0,High Protein
+Weight_Loss,Dinner,Paneer (Light) + Veg + Rice (small),بانير لايت + خضار + رز (صغير),520.0,28.0,55.0,16.0,7.0,7.0,Vegetarian

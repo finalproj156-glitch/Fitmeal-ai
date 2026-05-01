@@ -1,199 +1,122 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import pickle
 import pandas as pd
+import numpy as np
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# ================== FILE PATHS ==================
+PATH_MEALS = "fitmeal_meals_ready_tags.csv"
+PATH_SNACKS = "fitmeal_snacks_ready_v2.csv"
+PATH_DRINKS = "fitmeal_drinks_ready_v2.csv"
 
-# تحميل ملف الوجبات (مع حماية من الخطأ)
-try:
-    weekly_plan = []
-except Exception as e:
-    print("ERROR LOADING weekly_plan.pkl:", e)
-    weekly_plan = pd.DataFrame()
-
-
+# ================== INPUT MODEL ==================
 class UserInput(BaseModel):
     age: int
     gender: str
     weight: float
     height: float
     activity: str
-    meals_per_day: int = 3
-    goal: str | None = None
+    meals_per_day: int
 
-
-def calculate_bmi(weight: float, height_cm: float) -> float:
-    height_m = height_cm / 100
-    bmi = weight / (height_m ** 2)
-    return round(bmi, 2)
-
-
-def calculate_tdee(weight: float, height: float, age: int, gender: str, activity: str) -> float:
-    gender = gender.lower().strip()
-    activity = activity.lower().strip()
-
-    if gender == "male":
-        bmr = 10 * weight + 6.25 * height - 5 * age + 5
-    else:
-        bmr = 10 * weight + 6.25 * height - 5 * age - 161
-
-    activity_factors = {
+# ================== FUNCTIONS ==================
+def calculate_tdee(age, gender, height_cm, weight_kg, activity):
+    g = gender.lower()
+    bmr = 10 * weight_kg + 6.25 * height_cm - 5 * age + (5 if g in ["male", "m"] else -161)
+    factors = {
         "sedentary": 1.2,
         "light": 1.375,
         "moderate": 1.55,
         "active": 1.725,
-        "very_active": 1.9,
-        "very active": 1.9
+        "very_active": 1.9
     }
+    return bmr * factors.get(activity.lower(), 1.55)
 
-    factor = activity_factors.get(activity, 1.55)
-    tdee = bmr * factor
-    return round(tdee, 2)
-
-
-def determine_goal(user_goal: str | None, bmi: float) -> str:
-    if user_goal:
-        g = user_goal.lower().strip()
-        if g in ["muscle_gain", "gain", "weight_gain", "bulk"]:
-            return "Muscle_Gain"
-        if g in ["fat_loss", "loss", "weight_loss", "cut"]:
-            return "Fat_Loss"
-        if g in ["maintenance", "maintain"]:
-            return "Maintenance"
-
+def infer_goal_from_bmi(bmi):
     if bmi < 18.5:
         return "Muscle_Gain"
     elif bmi >= 25:
-        return "Fat_Loss"
-    else:
-        return "Maintenance"
+        return "Weight_Loss"
+    return "Maintenance"
 
-
-def macro_targets(tdee: float, goal: str) -> dict:
-    if goal == "Muscle_Gain":
-        calories = tdee + 300
-        protein = round((calories * 0.30) / 4, 1)
-        fats = round((calories * 0.30) / 9, 1)
-        carbs = round((calories * 0.40) / 4, 1)
-    elif goal == "Fat_Loss":
-        calories = tdee - 400
-        protein = round((calories * 0.35) / 4, 1)
-        fats = round((calories * 0.25) / 9, 1)
-        carbs = round((calories * 0.40) / 4, 1)
+def macro_targets(tdee, goal, weight):
+    if goal == "Weight_Loss":
+        protein = 1.8 * weight
+    elif goal == "Muscle_Gain":
+        protein = 1.8 * weight
     else:
-        calories = tdee
-        protein = round((calories * 0.30) / 4, 1)
-        fats = round((calories * 0.25) / 9, 1)
-        carbs = round((calories * 0.45) / 4, 1)
+        protein = 1.6 * weight
 
     return {
-        "target_kcal": round(calories, 1),
-        "protein_g_target": protein,
-        "fat_g_target": fats,
-        "carb_g_target": carbs
+        "protein_g_target": round(protein, 1),
+        "fat_g_target": round((0.3 * tdee) / 9, 1),
+        "carb_g_target": round((0.4 * tdee) / 4, 1),
     }
 
+def load_meals():
+    return pd.read_csv(PATH_MEALS)
 
-def build_weekly_response(df: pd.DataFrame, meals_per_day: int) -> list:
-    if df.empty:
-        return []
+def load_snacks():
+    return pd.read_csv(PATH_SNACKS)
 
-    result = []
-    working_df = df.copy()
+def load_drinks():
+    return pd.read_csv(PATH_DRINKS)
 
-    column_map = {}
-    for col in working_df.columns:
-        c = col.strip().lower()
-        if c == "day":
-            column_map[col] = "Day"
-        elif c == "meal_type":
-            column_map[col] = "Meal_Type"
-        elif c == "meal_name":
-            column_map[col] = "Meal_Name"
-        elif c == "servings":
-            column_map[col] = "Servings"
-        elif c == "target_kcal":
-            column_map[col] = "Target_kcal"
-        elif c == "est_kcal":
-            column_map[col] = "Est_kcal"
+def simple_plan(meals_df):
+    return meals_df.head(7)
 
-    working_df = working_df.rename(columns=column_map)
-
-    if "Day" in working_df.columns:
-        working_df = working_df.sort_values(by="Day")
-
-    if "Meal_Type" in working_df.columns:
-        if meals_per_day == 3:
-            allowed = ["Breakfast", "Lunch", "Dinner"]
-        else:
-            allowed = ["Breakfast", "Snack", "Lunch", "Dinner"]
-        working_df = working_df[working_df["Meal_Type"].isin(allowed)]
-
-    for _, row in working_df.iterrows():
-        item = {}
-        for col in working_df.columns:
-            value = row[col]
-            if pd.isna(value):
-                item[col] = None
-            else:
-                item[col] = value.item() if hasattr(value, "item") else value
-        result.append(item)
-
-    return result
-
-
+# ================== API ==================
 @app.get("/")
 def home():
     return {"message": "FitMeal API working ✅"}
 
-
 @app.post("/plan")
 def get_plan(data: UserInput):
-    try:
-        bmi = calculate_bmi(data.weight, data.height)
-        tdee = calculate_tdee(data.weight, data.height, data.age, data.gender, data.activity)
-        goal = determine_goal(data.goal, bmi)
-        targets = macro_targets(tdee, goal)
 
-        return {
-            "tdee": tdee,
-            "goal": goal,
-            "target_calories": targets["target_kcal"],
-            "protein_g_target": targets["protein_g_target"],
-            "fat_g_target": targets["fat_g_target"],
-            "carb_g_target": targets["carb_g_target"],
-            "bmi": bmi,
-            "user_daily_needs": {
-                "Age": data.age,
-                "Gender": data.gender,
-                "Weight_kg": data.weight,
-                "Height_cm": data.height,
-                "BMI": bmi,
-                "Activity": data.activity,
-                "Goal": goal,
-                "TDEE_kcal": tdee,
-                "Protein_g_target": targets["protein_g_target"],
-                "Fat_g_target": targets["fat_g_target"],
-                "Carb_g_target": targets["carb_g_target"],
-                "Meals_per_day": data.meals_per_day
-            },
-            "weekly_plan": [],
-            "drinks": [
-                "Water (aim for 2-3L/day)",
-                "Green Tea (optional, no sugar)",
-                "Laban (good post-meal)"
-            ]
-        }
+    bmi = data.weight / ((data.height / 100) ** 2)
+    goal = infer_goal_from_bmi(bmi)
 
-    except Exception as e:
-        return {"error": str(e)}
+    tdee = calculate_tdee(
+        data.age,
+        data.gender,
+        data.height,
+        data.weight,
+        data.activity
+    )
+
+    targets = macro_targets(tdee, goal, data.weight)
+
+    meals_df = load_meals()
+    snacks_df = load_snacks()
+    drinks_df = load_drinks()
+
+    plan = simple_plan(meals_df)
+
+    return {
+        "bmi": round(bmi, 2),
+        "goal": goal,
+        "tdee": round(tdee, 1),
+
+        "user_daily_needs": {
+            "Age": data.age,
+            "Gender": data.gender,
+            "Weight_kg": data.weight,
+            "Height_cm": data.height,
+            "BMI": round(bmi, 2),
+            "Activity": data.activity,
+            "Goal": goal,
+            "TDEE_kcal": round(tdee, 1),
+            "Protein_g_target": targets["protein_g_target"],
+            "Fat_g_target": targets["fat_g_target"],
+            "Carb_g_target": targets["carb_g_target"],
+            "Meals_per_day": data.meals_per_day
+        },
+
+        "weekly_plan": plan.to_dict(orient="records"),
+
+        "drinks": [
+            "Water (2-3L/day)",
+            "Green Tea",
+            "Laban"
+        ]
+    }

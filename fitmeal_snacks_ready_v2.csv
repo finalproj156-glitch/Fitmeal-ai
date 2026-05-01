@@ -1,0 +1,19 @@
+Goal,Snack_Name,Snack_Name_AR,Calories,Protein_g,Carbs_g,Fat_g,Fiber_g,Sugars_g,Tags
+Muscle_Gain,Protein Shake + Banana,شيك بروتين + موز,360.0,35.0,40.0,6.0,3.0,18.0,High Protein
+Muscle_Gain,Greek Yogurt + Honey (1 tsp),زبادي يوناني + عسل (ملعقة),260.0,20.0,25.0,8.0,0.0,18.0,High Protein
+Muscle_Gain,Cottage Cheese + Berries,جبن قريش + توت,230.0,20.0,20.0,6.0,4.0,10.0,High Protein
+Muscle_Gain,Dates (3) + Milk,3 تمر + حليب,320.0,12.0,48.0,8.0,4.0,35.0,Energy
+Muscle_Gain,Nuts (30g) + Fruit,مكسرات (30غ) + فاكهة,320.0,8.0,30.0,20.0,6.0,14.0,Healthy Fats
+Muscle_Gain,Tuna Wrap (small),راب تونة (صغير),300.0,28.0,25.0,10.0,4.0,4.0,High Protein
+Maintenance,Greek Yogurt + Berries,زبادي يوناني + توت,220.0,18.0,22.0,7.0,3.0,12.0,Balanced
+Maintenance,Apple + Peanut Butter (1 tbsp),تفاح + زبدة فول,240.0,6.0,28.0,12.0,5.0,16.0,Balanced
+Maintenance,Nuts (25g),مكسرات (25غ),170.0,6.0,6.0,14.0,3.0,2.0,Healthy Fats
+Maintenance,Cottage Cheese + Fruit,جبن قريش + فاكهة,230.0,18.0,24.0,7.0,3.0,14.0,Balanced
+Maintenance,Hummus + Veg sticks,حمص + خضار,210.0,7.0,18.0,10.0,5.0,2.0,High Fiber
+Maintenance,Protein Bar (light),بار بروتين لايت,240.0,18.0,25.0,8.0,4.0,10.0,High Protein
+Weight_Loss,Greek Yogurt (low fat) + Berries,زبادي قليل الدسم + توت,180.0,16.0,18.0,4.0,3.0,10.0,Low Cal
+Weight_Loss,Cottage Cheese + Cucumber,جبن قريش + خيار,160.0,16.0,8.0,6.0,1.0,3.0,Low Cal
+Weight_Loss,Apple,تفاح,95.0,0.0,25.0,0.0,4.0,19.0,Low Cal
+Weight_Loss,Orange,برتقال,80.0,1.0,20.0,0.0,3.0,16.0,Low Cal
+Weight_Loss,Hummus (small) + Veg,حمص (صغير) + خضار,180.0,6.0,14.0,10.0,4.0,2.0,Low Cal
+Weight_Loss,Protein Shake (light),شيك بروتين لايت,200.0,25.0,10.0,4.0,0.0,4.0,High Protein;Low Cal
